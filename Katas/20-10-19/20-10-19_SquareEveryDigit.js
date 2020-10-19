@@ -15,6 +15,11 @@
  *
  */
 
+/**
+ * 
+ * @param num
+ * @returns {number}
+ */
 function squareDigits(num) {
    let numStr = ('' + num).split('');
    let retArr = numStr.map(item => {

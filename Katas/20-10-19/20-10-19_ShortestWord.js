@@ -6,6 +6,11 @@
  *
  */
 
+/**
+ *
+ * @param s
+ * @returns {*}
+ */
 function findShort(s) {
 
     if (typeof s !== 'string' || s === '') {
