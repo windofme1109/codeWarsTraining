@@ -28,7 +28,7 @@ function findOdd(A) {
         return count;
     });
 
-    // 找到出现奇数次数的元素的索引
+    // 4. 找到出现奇数次数的元素的索引
     let targetIndex = counts.findIndex(item => item % 2 === 1);
 
     return arrWithoutRepeatElement[targetIndex];
