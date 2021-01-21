@@ -14,7 +14,11 @@
  *
  */
 
-
+/**
+ * 计算一个字符中重复的字符的个数
+ * @param text
+ * @returns {number}
+ */
 function duplicateCount(text){
 
     const charArr = text.toLowerCase().split('');
