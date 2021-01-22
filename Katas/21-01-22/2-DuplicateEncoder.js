@@ -14,30 +14,50 @@
  *
  */
 
-function duplicateEncode(word){
+/**
+ * 字符串转换，将每一个字符替换为 ( 或者 )，规则是：重复的字符使用 ) 替换，而唯一的字符使用 ( 替换
+ * @param word
+ * @returns {string}
+ */
+// function duplicateEncode(word){
+//
+//     const wordArr = word.toLowerCase().split('');
+//
+//     const obj = wordArr.reduce((acc, el) => {
+//         if (acc[el]) {
+//             acc[el] += 1;
+//         } else {
+//             acc[el] = 1;
+//         }
+//
+//         return acc;
+//     }, {});
+//
+//     let ret = wordArr.map(item => {
+//         if (obj[item] > 1) {
+//             return ')';
+//         } else {
+//             return '(';
+//         }
+//     });
+//
+//     return ret.join('');
+// }
 
+
+function duplicateEncode(word) {
     const wordArr = word.toLowerCase().split('');
+    const ret = wordArr.map((item, index) => {
 
-    const obj = wordArr.reduce((acc, el) => {
-        if (acc[el]) {
-            acc[el] += 1;
-        } else {
-            acc[el] = 1;
-        }
-
-        return acc;
-    }, {});
-
-    let ret = wordArr.map(item => {
-        if (obj[item] > 1) {
-            return ')';
-        } else {
+        if (wordArr.indexOf(item) === wordArr.lastIndexOf(item)) {
+            // 正向查找和反向查找返回的索引是一样的，那么证明这个元素是唯一的
             return '(';
+        } else {
+            return ')'
         }
-    });
+    })
 
     return ret.join('');
 }
-
 
 console.log(duplicateEncode('Success') === ')())())')
