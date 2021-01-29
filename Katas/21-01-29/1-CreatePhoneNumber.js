@@ -17,7 +17,11 @@
 //     return `(${numbers.slice(0, 3).join('')}) ${numbers.slice(3, 6).join('')}-${numbers.slice(6).join('')}`;
 // }
 
-
+/**
+ * 格式化电话号码 ：(xxx) xxx-xxxx
+ * @param numbers
+ * @returns {string}
+ */
 function createPhoneNumber(numbers){
     if (numbers.length !== 10) {
         return;

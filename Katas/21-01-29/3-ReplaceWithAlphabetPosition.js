@@ -14,6 +14,11 @@
  *
  */
 
+/**
+ * 字母在字母表中出现为位置取替换字母
+ * @param text
+ * @returns {string}
+ */
 function alphabetPosition(text) {
     // 将字符串中的字母全部转为小写
     // 使用正则表达式，去除字符串中的非字母字符
