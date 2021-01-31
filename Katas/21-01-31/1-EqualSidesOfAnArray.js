@@ -33,14 +33,19 @@
  *
  */
 
-
+/**
+ * 找到数组中某个位置的元素，这个元素左右两侧的元素和相等，最后返回这个元素的索引
+ * @param arr
+ * @returns {number|*}
+ */
 function findEvenIndex(arr) {
 
     arr.unshift(0);
+    arr.push(0);
     let ret = [];
     for (let i = 1; i < arr.length; i++) {
-        let rightSum = arr.slice(i + 1).reduce((a, b) => a + b, 0);
-        let leftSum = arr.slice(0, i).reduce((a, b) => a + b, 0);
+        let rightSum = partSum(arr, i+ 1, arr.length);
+        let leftSum = partSum(arr, 0, i);
         if (rightSum === leftSum) {
             ret.push(i - 1);
             break;
@@ -55,7 +60,11 @@ function findEvenIndex(arr) {
 
 }
 
+function partSum(arr, from, to) {
+    return arr.slice(from, to).reduce((a, b) => a + b, 0);
+}
 
 console.log(findEvenIndex([1,100,50,-51,1,1]));
 console.log(findEvenIndex([20,10,-80,10,10,15,35]));
 console.log(findEvenIndex([1,2,3,4,3,2,1]));
+console.log(findEvenIndex([1, 2, 3, -6, 7]));
