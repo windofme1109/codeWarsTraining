@@ -25,6 +25,12 @@
  * consecutive strings : follow one after another without an interruption
  */
 
+/**
+ * 根据 k，找到连续的字符串，并进行拼接，找到最长的拼接后的字符串
+ * @param strarr
+ * @param k
+ * @returns {string|*}
+ */
 function longestConsec(strarr, k) {
     const arrLength = strarr.length;
     if (arrLength === 0 || k < 0 || k > arrLength) {

@@ -10,6 +10,11 @@
  *
  */
 
+/**
+ * 将以 - 或者是 _ 分隔的单词，以驼峰命名的方式，拼接成一个完整的字符串
+ * @param str
+ * @returns {string}
+ */
 function toCamelCase(str){
     if (str === '') {
         return '';
@@ -18,6 +23,7 @@ function toCamelCase(str){
 
     const camelCase = strArr.map((item, index) => {
         if (index === 0) {
+            // 第一个单词不用管
             return item;
         }
         return item.slice(0, 1).toUpperCase() + item.slice(1);
