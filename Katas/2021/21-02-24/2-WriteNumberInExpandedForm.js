@@ -17,13 +17,20 @@
  */
 function expandedForm(num) {
 
+    // 数字转换为字符串
     let strNum = '' + num;
+    // 获得数字的位数
     let n = strNum.length;
+    // 存放数字每一位
     let digitArr = [];
+
     for (let i = 1; i <= strNum.length; i++) {
+        // 任何一个数字都可以写成 n * 1000 + m * 100 + ... 的形式
         let t = Math.pow(10, n - 1);
+        // 获得每一位
         let digit = Math.floor(num / t);
         digitArr.push(digit);
+        // 去除最高位
         num = num - digit * t;
         n--;
     }
@@ -59,9 +66,11 @@ function numToChinese(num) {
 
     const chineseDigit = digitArr.map((item, index) => {
         if (item === 0 || index === strNum.length - 1) {
+            // 如果当前位数是 0，直接取零，
+            // 如果是最后一位，那么直接取其所对应的中文数字
             return ones[item];
         }
-
+        // 数字 + 单位
         return ones[item] + units[strNum.length - index - 2];
     })
 
@@ -69,7 +78,9 @@ function numToChinese(num) {
 
     // 去除多余的零
     chineseNum = chineseNum.replace(/零+/g, '零');
+    // 去除末尾的零
     chineseNum = chineseNum.replace(/(零+)$/, '');
+    // 将一十开头的数字替换位十
     chineseNum = chineseNum.replace(/^(一十)/, '十');
     return chineseNum;
 }
