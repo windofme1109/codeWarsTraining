@@ -6,6 +6,11 @@
  *
  */
 
+/**
+ * 保持顺序的情况下将数组中的 0 挪到数组的末尾
+ * @param arr
+ * @returns {unknown[]}
+ */
 var moveZeros = function (arr) {
     let arrWithZeros = arr.filter(item => item !== 0);
     let zeroArr = arr.filter(item => item === 0);

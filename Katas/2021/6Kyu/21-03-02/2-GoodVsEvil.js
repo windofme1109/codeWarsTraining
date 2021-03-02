@@ -40,6 +40,12 @@
  * goodVsEvil('1 1 1 1 1 1', '1 1 1 1 1 1 1')  returns 'Battle Result: Evil eradicates all trace of Good'
  */
 
+/**
+ * 数组加权求和
+ * @param good
+ * @param evil
+ * @returns {string}
+ */
 function goodVsEvil(good, evil) {
     const goodWorth = [1, 2, 3, 3, 4, 10];
     const evilWorth = [1, 2, 2, 2, 3, 5, 10];
