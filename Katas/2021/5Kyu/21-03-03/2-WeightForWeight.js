@@ -21,43 +21,83 @@
  *
  */
 
+/**
+ * 根据权重排序
+ * 如果权重相同，则数字是按照其字符串形式进行排序，即比较其 unicode
+ * @param strng
+ * @returns {string}
+ */
+// function orderWeight(strng) {
+//
+//     if (strng === '') {
+//         return '';
+//     }
+//
+//
+//     let weightArr = strng.trim().split(/\s+/).map(item => {
+//         const weight = item.split('').reduce((acc, ele) => acc + ele * 1, 0);
+//         return {
+//             weight,
+//             weightNum: item * 1
+//         }
+//
+//     });
+//     weightArr.sort((a, b) => {
+//         if (a.weight > b.weight) {
+//             return 1;
+//         } else if (a.weight < b.weight) {
+//             return -1;
+//         } else {
+//             // 权重一样，根据体重的字母顺序进行比较
+//             // 也就是将体重转换为字符串，直接比较字符串，即比较的是 unicode
+//             if (String(a.weightNum) < String(b.weightNum)) {
+//                 return -1;
+//             } else if (String(a.weightNum) > String(b.weightNum)) {
+//                 return 1;
+//             } else {
+//                 return 0;
+//             }
+//         }
+//
+//     });
+//     return weightArr.map(item => {
+//         return item.weightNum;
+//     }).join(' ');
+// }
+
+/**
+ * 优化：使用localeCompare() 实现对字符串的比较
+ * @param strng
+ * @returns {string|string[]}
+ */
 function orderWeight(strng) {
 
     if (strng === '') {
         return '';
     }
+    const sum = function (str) {
+        return str.split('').reduce((acc, ele) => acc + ele * 1, 0);
+    }
 
+    let ret = strng.trim().split(/\s+/).sort((a, b) => {
+        let sumA = sum(a);
+        let sumB = sum(b);
 
-    let weightArr = strng.trim().split(/\s+/).map(item => {
-        const weight = item.split('').reduce((acc, ele) => acc + ele * 1, 0);
-        return {
-            weight,
-            weightNum: item * 1
+        if (sumA === sumB) {
+            // a.localeCompare(b) 以当地语言的习惯来比较字符串 a 和 b 的顺序
+            // 如果 a 在 b 的前面，返回 -1
+            // 如果 a 在 b 的后面，返回 1
+            // 如果 a 和 顺序相同，返回 0
+            return a.localeCompare(b);
         }
 
-    });
-    weightArr.sort((a, b) => {
-        if (a.weight > b.weight) {
-            return 1;
-        } else if (a.weight < b.weight) {
-            return -1;
-        } else {
-            // 权重一样，根据体重的字母顺序进行比较
-            // 也就是将体重转换为字符串，直接比较字符串，即比较的是 unicode
-            if (String(a.weightNum) < String(b.weightNum)) {
-                return -1;
-            } else if (String(a.weightNum) > String(b.weightNum)) {
-                return 1;
-            } else {
-                return 0;
-            }
-        }
+        return sumA - sumB;
+    })
 
-    });
-    return weightArr.map(item => {
-        return item.weightNum;
-    }).join(' ');
+    return ret;
 }
+
+
 
 // 100 180 90 56 65 74 68 86 99
 // console.log(orderWeight('56 65 74 100 99 68 86 180 90'));
