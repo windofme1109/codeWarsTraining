@@ -16,17 +16,18 @@
  * @param seconds
  * @returns {string}
  */
-function humanReadable(seconds) {
-    let hours = Math.floor(seconds / 3600) ;
-    let minutes = Math.floor((seconds - hours * 3600) / 60);
-    let second = seconds - minutes * 60 - hours * 3600;
-
-    hours = hours > 9 ? hours : ('0' + hours);
-    minutes = minutes > 9 ? minutes : ('0' + minutes);
-    second = second > 9 ? second : ('0' + second);
-
-    return `${hours}:${minutes}:${second}`;
-}
+// function humanReadable(seconds) {
+//     //
+//     let hours = Math.floor(seconds / 3600) ;
+//     let minutes = Math.floor((seconds - hours * 3600) / 60);
+//     let second = seconds - minutes * 60 - hours * 3600;
+//
+//     hours = hours > 9 ? hours : ('0' + hours);
+//     minutes = minutes > 9 ? minutes : ('0' + minutes);
+//     second = second > 9 ? second : ('0' + second);
+//
+//     return `${hours}:${minutes}:${second}`;
+// }
 
 /**
  * 格式化时间优化
@@ -34,8 +35,11 @@ function humanReadable(seconds) {
  * @returns {string}
  */
 function humanReadable(seconds) {
+    // 给的的是秒数，所以首先计算小时，如果不足两位，使用 0 补齐
     let hours = String(Math.floor(seconds / 3600)).padStart(2, '0');
+    // 计算分钟数，计算前要去除小时所占用的秒数，如果不足两位，使用 0 补齐
     let minutes = String(Math.floor((seconds - hours * 3600) / 60)).padStart(2, '0');
+    // 计算剩余的秒数
     let second = String(seconds - minutes * 60 - hours * 3600).padStart(2, '0');
     return `${hours}:${minutes}:${second}`;
 }
