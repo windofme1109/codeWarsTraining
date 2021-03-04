@@ -70,6 +70,8 @@ const longestPalindrome = function(s) {
         let temp = '';
 
         for (let j = i; j < s.length; j++) {
+            // 每次从字符串的 i 位置开始拼接
+            // 这样可以将所有长度（1 2 3 ... n）的字符串拼接起来
             temp += s.charAt(j);
             if (temp === temp.split('').reverse().join('') && temp.length > longestPalindrome.length) {
                 longestPalindrome = temp;

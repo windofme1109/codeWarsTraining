@@ -31,6 +31,11 @@
  *
  */
 
+/**
+ * Luhn 算法校验信用卡卡号
+ * @param n
+ * @returns {boolean}
+ */
 function validate(n){
     const cardNumArr = String(n).split('');
 

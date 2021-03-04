@@ -13,6 +13,13 @@
  *
  */
 
+/**
+ * 十进制 rgb 转换为 十六进制 0 - 255 转换为 00 - FF
+ * @param r
+ * @param g
+ * @param b
+ * @returns {string}
+ */
 function rgb(r, g, b){
 
     let redToHex = r > 255 ? decimalToHexadecimal(255) : decimalToHexadecimal(r);
@@ -22,10 +29,16 @@ function rgb(r, g, b){
     redToHex = redToHex.length === 2 ? redToHex : ('0' + redToHex);
     greenToHex = greenToHex.length === 2 ? greenToHex : ('0' + greenToHex);
     blueToHex = blueToHex.length === 2 ? blueToHex : ('0' + blueToHex);
-    console.log(redToHex, greenToHex, blueToHex);
+
     return `${redToHex}${greenToHex}${blueToHex}`;
 }
 
+/**
+ * 十进制转十六进制
+ * 使用的是短除法
+ * @param num
+ * @returns {string}
+ */
 function decimalToHexadecimal(num) {
 
     if (num <= 0) {
