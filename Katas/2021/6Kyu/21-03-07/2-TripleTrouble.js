@@ -20,7 +20,15 @@
  */
 
 function tripledouble(num1, num2) {
-
+    let triple = String(num1).match(/(0{3})|(1{3})|(2{3})|(3{3})|(4{3})|(5{3})|(6{3})|(7{3})|(8{3})|(9{3})/g) || [];
+    let double = String(num2).match(/(0{2})|(1{2})|(2{2})|(3{2})|(4{2})|(5{2})|(6{2})|(7{2})|(8{2})|(9{2})/g);
+    for (let key of triple) {
+        let num = key.slice(0, 2);
+        if (double && double.includes(num)) {
+            return 1;
+        }
+    }
+    return 0;
 }
 
 
@@ -38,4 +46,4 @@ function numCounts(num) {
 
 // console.log(tripledouble(1222345, 12345))
 // console.log(tripledouble(451999277, 41177722899))
-console.log(tripledouble(10560002, 100))
+console.log(tripledouble(111222333444555, 100))
