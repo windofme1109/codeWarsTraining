@@ -21,29 +21,41 @@
  *
  */
 
-function abbreviate(string) {
-    // 以空格分割出单词
-    const words = string.split(' ').map(item => {
-        return item.split(/([a-zA-Z]+)/).map(w => {
-            if (/[a-zA-Z]+/.test(w) && w.length >= 4) {
-                return replaceChar(w);
-            }
-
-            return w;
-        }).join('');
-
-    }).join(' ');
-
-    return words;
-}
+// function abbreviate(string) {
+//     // 以空格分割出单词
+//     const words = string.split(' ').map(item => {
+//         return item.split(/([a-zA-Z]+)/).map(w => {
+//             if (/[a-zA-Z]+/.test(w) && w.length >= 4) {
+//                 return replaceChar(w);
+//             }
+//
+//             return w;
+//         }).join('');
+//
+//     }).join(' ');
+//
+//     return words;
+// }
 
 function replaceChar(word) {
     return word[0] + word.slice(1, word.length - 1).length + word[word.length - 1];
 }
 
+// console.log(abbreviate('elephant-rides are really fun!'));
+// console.log(abbreviate('elephant-ride'));
+// console.log(replaceChar('elephant'));
+
+
+function abbreviate(string) {
+
+    // 使用正则，匹配出长度大于等于 4 的单词，不匹配其他字符
+    // 利用 replace() 的第二个参数可以接收函数的特性，对匹配的结果依次进行替换操作
+    return string.replace(/[a-zA-Z]{4,}/g, (match) => {
+        return match[0] + match.slice(1, match.length - 1).length + match[match.length - 1];
+    })
+
+}
+
 console.log(abbreviate('elephant-rides are really fun!'));
 console.log(abbreviate('elephant-ride'));
 console.log(replaceChar('elephant'));
-
-
-;
