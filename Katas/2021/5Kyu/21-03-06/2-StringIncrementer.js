@@ -20,7 +20,11 @@
  *
  */
 
-
+/**
+ * 字符串与数字的组合，使用正则提取出字符串与数字，然后数字加 1
+ * @param strng
+ * @returns {string|*}
+ */
 function incrementString (strng) {
 
     if (strng === '') {
@@ -28,7 +32,6 @@ function incrementString (strng) {
     }
 
     return strng.replace(/([a-zA-Z]*)([0-9]*)/, function (match, $1, $2) {
-        console.log($1, $2);
         if (!$2) {
             $2 = '0';
         }

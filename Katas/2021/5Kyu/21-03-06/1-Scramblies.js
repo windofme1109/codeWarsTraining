@@ -14,6 +14,14 @@
  *
  */
 
+/**
+ * str1 中的字母能否组成 str2
+ * 原理就是统计 str2 与 str1 中字母的数量，然后进行比较
+ * 即 str2 中的字母必须在 str1 中，同时 str1 中对应的字母的数量必须大于 str1
+ * @param str1
+ * @param str2
+ * @returns {boolean}
+ */
 function scramble(str1, str2) {
     const strCount1 = charCount(str1);
     const strCount2 = charCount(str2);

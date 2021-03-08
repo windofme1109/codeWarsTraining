@@ -15,6 +15,12 @@
  */
 
 
+/**
+ *
+ * @param m
+ * @param n
+ * @returns {[]}
+ */
 function listSquared(m, n) {
     let ret = [];
 
