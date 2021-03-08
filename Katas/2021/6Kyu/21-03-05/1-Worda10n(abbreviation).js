@@ -45,7 +45,11 @@ function replaceChar(word) {
 // console.log(abbreviate('elephant-ride'));
 // console.log(replaceChar('elephant'));
 
-
+/**
+ * 单词缩写，类似于 i18n
+ * @param string
+ * @returns {*}
+ */
 function abbreviate(string) {
 
     // 使用正则，匹配出长度大于等于 4 的单词，不匹配其他字符

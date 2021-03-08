@@ -19,12 +19,20 @@
  *
  */
 
+/**
+ * num1 找出连续三个相同的数字，num2 中找出连续相同的两个数字，
+ * 判断找出的两个数字是否相同
+ * @param num1
+ * @param num2
+ * @returns {number}
+ */
 function tripledouble(num1, num2) {
+    // 匹配字符串中是否出现连续几个相同的数字
     let triple = String(num1).match(/(0{3})|(1{3})|(2{3})|(3{3})|(4{3})|(5{3})|(6{3})|(7{3})|(8{3})|(9{3})/g) || [];
-    let double = String(num2).match(/(0{2})|(1{2})|(2{2})|(3{2})|(4{2})|(5{2})|(6{2})|(7{2})|(8{2})|(9{2})/g);
+    let double = String(num2).match(/(0{2})|(1{2})|(2{2})|(3{2})|(4{2})|(5{2})|(6{2})|(7{2})|(8{2})|(9{2})/g) || [];
     for (let key of triple) {
         let num = key.slice(0, 2);
-        if (double && double.includes(num)) {
+        if (double.includes(num)) {
             return 1;
         }
     }
@@ -32,18 +40,7 @@ function tripledouble(num1, num2) {
 }
 
 
-function numCounts(num) {
-    return String(num).split('').reduce((acc, ele) => {
-        if (acc[ele]) {
-            acc[ele] += 1;
-        } else {
-            acc[ele] = 1;
-        }
-
-        return acc;
-    }, {})
-}
-
 // console.log(tripledouble(1222345, 12345))
 // console.log(tripledouble(451999277, 41177722899))
-console.log(tripledouble(111222333444555, 100))
+console.log(tripledouble(111222333444555, 100));
+console.log(tripledouble(12333444555, 100));

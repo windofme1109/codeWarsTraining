@@ -19,6 +19,11 @@
  *
  */
 
+/**
+ * 字符串排序与转换
+ * @param s
+ * @returns {string}
+ */
 function meeting(s) {
     let firstAndLast = s.split(';').map(item => {
         const name = item.split(':');
