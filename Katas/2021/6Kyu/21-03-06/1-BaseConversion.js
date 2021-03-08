@@ -45,7 +45,58 @@ var Alphabet = {
     ALPHA_NUMERIC: '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 };
 
-
+/**
+ * 任意进制的转换
+ * @param input
+ * @param source
+ * @param target
+ * @returns {string|*}
+ */
 function convert(input, source, target) {
-    // TODO
+    const decimal = str2Decimal(input, source);
+    return decimal2OtherRadix(decimal, target);
+
 }
+
+/**
+ * 任意进制的字符串转换为十进制数字
+ * @param str
+ * @param radix
+ * @returns {number}
+ */
+function str2Decimal(str, radix) {
+    return str.split('').reduce((acc, ele, index) => {
+        return acc + radix.indexOf(ele) * Math.pow(radix.length, str.length - 1 - index);
+    }, 0);
+}
+
+/**
+ * 十进制字符串转换为其他进制
+ * @param str
+ * @param targetRadix
+ * @returns {string|*}
+ */
+function decimal2OtherRadix(str, targetRadix) {
+
+    let num = str * 1;
+    if (num === 0) {
+        return targetRadix[num];
+    }
+
+    let radix = targetRadix.length;
+    let ret = [];
+    while (num > 0) {
+        let quotient = Math.floor(num / radix);
+        let remainder = num % radix;
+        ret.push(remainder);
+
+        num = quotient;
+    }
+    ret.reverse();
+
+    return ret.map(item => {
+        return targetRadix[item * 1];
+    }).join('');
+
+}
+
