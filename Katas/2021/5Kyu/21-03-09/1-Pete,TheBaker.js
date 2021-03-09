@@ -12,6 +12,13 @@
  * cakes({apples: 3, flour: 300, sugar: 150, milk: 100, oil: 100}, {sugar: 500, flour: 2000, milk: 2000});
  *
  */
+
+/**
+ * 数组中的最小值
+ * @param recipe
+ * @param available
+ * @returns {number}
+ */
 function cakes(recipe, available) {
     // TODO: insert code
 

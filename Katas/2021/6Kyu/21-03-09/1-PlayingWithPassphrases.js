@@ -22,6 +22,12 @@
  *
  */
 
+/**
+ *
+ * @param s
+ * @param n
+ * @returns {string}
+ */
 function playPass(s, n) {
     const transformWords = s.split(' ').map(item => {
         return transform(item, n);
