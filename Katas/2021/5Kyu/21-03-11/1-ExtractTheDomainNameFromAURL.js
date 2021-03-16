@@ -22,7 +22,7 @@
 function domainName(url){
     //your code here
     // 因为 https://、http://、www 不一定都有，所以使用分组结合 ? 来分离出同 host 相关的内容
-    const pattern = /(https?:\/\/)?(www.)?(.+)/;
+    const pattern = /(https?:\/\/)?(www\.)?(.+)/;
     let host = url.match(pattern)[3];
 
     if (host) {
@@ -32,8 +32,25 @@ function domainName(url){
     return '';
 }
 
-console.log(domainName('http://github.com/carbonfive/raygun'))
-console.log(domainName('http://www.zombie-bites.com'))
-console.log(domainName('https://www.cnet.com'))
-console.log(domainName('https://youtube.com'))
-console.log(domainName('www.xakep.ru'))
+function domainName2(url){
+    //your code here
+    // 因为 https://、http://、www 不一定都有，所以使用分组结合 ? 来分离出同 host 相关的内容
+    // 因为域名后面一定跟着 .com .gov .cn 等等，所以末尾使用零宽后向断言判断域名后面是否有以 . 开头的东西
+    //
+    const pattern = /(https?:\/\/)?(www\.)?(.+)(?=\..+)/;
+    let host = url.match(pattern)[3];
+
+    return host ? host : '';
+}
+
+// const pattern = /(https?:\/\/)?(www\.)?.+(?=\.)/
+// console.log('http://github.com/carbonfive/raygun'.match(pattern));
+// console.log('http://www.zombie-bites.com'.match(pattern));
+
+
+
+console.log(domainName2('http://github.com/carbonfive/raygun'))
+console.log(domainName2('http://www.zombie-bites.com'))
+console.log(domainName2('https://www.cnet.com'))
+console.log(domainName2('https://youtube.com'))
+console.log(domainName2('www.xakep.ru'))
