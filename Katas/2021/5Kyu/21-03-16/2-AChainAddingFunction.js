@@ -48,12 +48,16 @@ function add(x) {
         return _sum;
     }
 
-    _sum.toString = function () {
-        return count;
-    }
+    /**
+     *
+     * @returns {*}
+     */
+    // _sum.toString = function () {
+    //     return count;
+    // }
 
     /**
-     * 类型转换的时候调用
+     * 转换为基本数据类型的时候调用，例如 +、-、*、/，== 等
      * @returns {*}
      */
     _sum.valueOf = function () {
@@ -67,8 +71,16 @@ function add(x) {
 let ret = add(1);
 
 console.log(ret(4) == 5);
+// true
 console.log(add(1)(2)(3) == 6);
+// 10
 console.log(add(1)(2)(3) + 4);
+// 3
+console.log(add(1)(2)(3) - 3);
+// 30
+console.log(add(1)(2)(3) * 5);
+// 2
+console.log(add(1)(2)(3) / 3);
 console.log(add(1)(2)(3));
 
 function sub() {
@@ -82,4 +94,4 @@ sub.toString = function() {
 sub.valueOf = function() {
     return 222;
 }
-console.log(sub)
+// console.log(sub)
