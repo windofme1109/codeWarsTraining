@@ -31,9 +31,11 @@
  * 因为还需要将结果保存起来，我们还需要一个变量，保存求和的结果
  * 因此使用闭包，这样就可以保留对这个变量的引用
  *
- * 除了链式调用，还能实现 类似于 add(1)(2)(3)(4) == 10，add(2) + 5 = 7 类似的操作
- * 如果我们强制将一个对象转换为基本数据类型（boolean、number、string），默认地会将其转换为类似于 "[object Object]" 的形式
- * 如果我们给对象添加了一个 valueOf() 的方法，那么进行转换时，就会调用 valueOf()，那么转换后的值就是 valueOf() 的返回值
+ * 除了链式调用，还能实现类似于 add(1)(2)(3)(4) == 10，add(2) + 5 = 7 类似的操作
+ * 如果我们强制将一个对象转换为基本数据类型（boolean、number、string），
+ * 包括比较操作（==、>、<），一元运算符（+、-），这些操作会将对象转换为数值类型
+ * 默认地会将其转换为类似于 "[object Object]" 的形式
+ * 如果我们给对象添加了一个 valueOf() 的方法，这个方法并能返回基本数据类型，那么进行转换时，就会调用 valueOf()，那么转换后的值就是 valueOf() 的返回值
  *
  * @param x
  * @returns {any}
@@ -82,16 +84,8 @@ console.log(add(1)(2)(3) * 5);
 // 2
 console.log(add(1)(2)(3) / 3);
 console.log(add(1)(2)(3));
+// 发生数值转换
+console.log(+add(1)(2)(3));
 
-function sub() {
-    return 0;
 
-}
 
-sub.toString = function() {
-    return '111';
-}
-sub.valueOf = function() {
-    return 222;
-}
-// console.log(sub)
