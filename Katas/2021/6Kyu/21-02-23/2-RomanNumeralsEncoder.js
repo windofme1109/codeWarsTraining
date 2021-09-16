@@ -80,7 +80,7 @@ function solution(number) {
     const threeDigitNums = ['', 'C', 'CC', 'CCC', 'CD', 'D', 'DC', 'DCC', 'DCCC', 'CM'];
     let ret = '';
     // 对千位数进行转换
-    while (number > 1000) {
+    while (number >= 1000) {
         ret += 'M';
         // 每转换完一次，就减去 1000，最终能得到百位数
         number = number - 1000;
@@ -103,6 +103,9 @@ function solution(number) {
 
 
 console.log(solution(2008));
+console.log(solution(2000));
+console.log(solution(1000));
+console.log(solution(100));
 console.log(solution(1990));
 console.log(solution(18));
 console.log(solution(101));
